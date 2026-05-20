@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.database import engine, Base
+from app.database import get_engine, Base
 from app.routes import auth_routes, project_routes, task_routes, dashboard_routes
 
 load_dotenv()
@@ -42,7 +42,7 @@ app.add_middleware(
 @app.on_event("startup")
 def create_tables():
     """Create database tables on first run (beginner-friendly)."""
-    Base.metadata.create_all(bind=engine)
+    Base.metadata.create_all(bind=get_engine())
 
 
 # Register route modules
