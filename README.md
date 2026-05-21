@@ -1,6 +1,20 @@
 # Team Task Manager
 
+A full-stack task management web application where admins can create projects, assign tasks, and track team progress with role-based authentication.
+
 A beginner-friendly full-stack web application for managing team projects and tasks with role-based access control.
+
+---
+
+## Live Demo
+
+Frontend:
+https://team-task-270056.netlify.app
+
+Backend API Docs:
+https://team-task-manager-production-0245.up.railway.app/docs
+
+---
 
 ## Tech Stack
 
@@ -9,28 +23,30 @@ A beginner-friendly full-stack web application for managing team projects and ta
 | Backend | FastAPI, SQLAlchemy, MySQL, JWT, bcrypt |
 | Frontend | HTML, CSS, Vanilla JavaScript, Bootstrap 5 |
 
+---
+
 ## Features
 
-- **Authentication** — Signup, login, JWT tokens, bcrypt password hashing
-- **Roles** — Admin (manage projects/tasks) and Member (view assigned tasks, update status)
-- **Projects** — Create and list projects
-- **Tasks** — CRUD, assign users, update status (Pending / In Progress / Completed)
-- **Dashboard** — Total, completed, pending, and overdue task counts
+- Authentication — Signup, login, JWT tokens, bcrypt password hashing
+- Roles — Admin (manage projects/tasks) and Member (view assigned tasks, update status)
+- Projects — Create and list projects
+- Tasks — CRUD operations, assign users, update status (Pending / In Progress / Completed)
+- Dashboard — Total, completed, pending, and overdue task counts
+- Responsive UI — Beginner-friendly interface using Bootstrap 5
+
+---
 
 ## Project Structure
 
-```
+```bash
 team-task-manager/
-├── backend/          # FastAPI API
-├── frontend/         # Static HTML/CSS/JS
+├── backend/          # FastAPI backend API
+├── frontend/         # Static HTML/CSS/JS frontend
 └── README.md
-```
-
-## Prerequisites
-
-- Python 3.10+
-- MySQL 8+ (local or cloud)
-- A static file server for the frontend (VS Code Live Server, `python3 -m http.server`, etc.)
+Prerequisites
+Python 3.10+
+MySQL 8+
+VS Code Live Server or any static file server
 
 ## 1. Database Setup
 
@@ -66,8 +82,8 @@ DATABASE_URL=mysql+pymysql://root:password@localhost:3306/taskmanager
 **Password special characters:** If your MySQL password contains `@`, `#`, `:`, or `/`, you must [URL-encode](https://en.wikipedia.org/wiki/Percent-encoding) them in `DATABASE_URL`. For example, password `Anviam@123` becomes:
 
 ```env
-DATABASE_URL=mysql+pymysql://root:Anviam%40123@localhost:3306/taskmanager
-SECRET_KEY=your-super-secret-key
+DATABASE_URL=mysql+pymysql://root:password@localhost:3306/taskmanager
+SECRET_KEY=your-secret-key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=1440
 CORS_ORIGINS=http://127.0.0.1:5500,http://localhost:5500
@@ -99,10 +115,15 @@ python3 -m http.server 5500
 
 ### First-time usage
 
-1. **Sign up** — Choose **Admin** or **Member** on the signup form.
-2. As Admin: create projects → create tasks → assign to members.
-4. As Member: view assigned tasks and update status.
-
+First-Time Usage
+Sign up as Admin or Member
+Admin can:
+Create projects
+Create tasks
+Assign tasks to members
+Members can:
+View assigned tasks
+Update task status
 ## API Endpoints
 
 | Method | Endpoint | Access | Description |
