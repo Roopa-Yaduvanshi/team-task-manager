@@ -18,21 +18,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS — allow frontend (Netlify, Vercel, or local static server)
-origins = os.getenv("CORS_ORIGINS", "http://127.0.0.1:5500")
-allow_origins = [o.strip() for o in origins.split(",") if o.strip()]
-# Common local URLs (python http.server may open as 0.0.0.0 or localhost)
-for origin in (
-    "http://127.0.0.1:5500",
-    "http://localhost:5500",
-    "http://0.0.0.0:5500",
-):
-    if origin not in allow_origins:
-        allow_origins.append(origin)
-
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allow_origins,
+    allow_origins=[
+        "https://team-task-270056.netlify.app",
+        "http://127.0.0.1:5500",
+        "http://localhost:5500",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
